@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const ExpressError = require("./helpers/expressError")
 app.use(cors());
 
 // const usersRoutes = require('./routes/users');
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 /** 404 handler */
 
 app.use(function (req, res, next) {
-  const err = new Error("Not Found", 404);
+  const err = new ExpressError("Not Found", 404);
 
   // pass the error to the next piece of middleware
   return next(err);
