@@ -13,6 +13,7 @@ CREATE TABLE users (
 
 CREATE TABLE listings (
     id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE,
     name text NOT NULL,
     image text NOT NULL,
     description text,
@@ -22,9 +23,16 @@ CREATE TABLE listings (
     time_created timestamp
 );
 
+CREATE TABLE transactions (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    listing_id INTEGER NOT NULL REFERENCES listings (id) ON DELETE CASCADE,
+    status TEXT NOT NULL
+);
+
 CREATE TABLE listing_windows (
     id SERIAL PRIMARY KEY,
     window_open text NOT NULL,
     window_close text NOT NULL,
-    listings_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE
+    listings_id INTEGER NOT NULL REFERENCES listings (id) ON DELETE CASCADE
 );
