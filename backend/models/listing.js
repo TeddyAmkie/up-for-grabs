@@ -21,4 +21,4 @@ class Listing {
     return result.rows;
   }
 }
-module.exports = Question;
+module.exports = Listing;
