@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS 'up-for-grabs';
-CREATE DATABASE 'up-for-grabs';
-\c 'up-for-grabs'
+DROP DATABASE IF EXISTS "up-for-grabs";
+CREATE DATABASE "up-for-grabs";
+\c "up-for-grabs"
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
