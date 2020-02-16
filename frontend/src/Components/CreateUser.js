@@ -1,5 +1,5 @@
 import React, {useState, Dropdown} from 'react';
-import {CustomToggle, CustomMenu} from './CustomToggle'
+import make_request from '../APIcall';
 
 function CreateUser() {
 
@@ -7,6 +7,12 @@ function CreateUser() {
   const [name, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let data = {name, accountType, email, password}
+    make_request('/users/', data, 'POST');
+  }
 
     return (
       <div>
@@ -29,7 +35,7 @@ function CreateUser() {
         <label>Password</label>
         <input name="password" onChange={e => setPassword(e.target.value)}></input>
 
-  
+      <button onClick={e => handleSubmit(e)}>Submit</button>
       </div>
     );
     
