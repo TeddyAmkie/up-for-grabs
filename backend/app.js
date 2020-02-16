@@ -5,7 +5,7 @@ const ExpressError = require("./helpers/expressError")
 app.use(cors());
 
 // const usersRoutes = require('./routes/users');
-const listingRoutes = require('./routes/listing');
+const listingRoutes = require('./routes/listings');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
