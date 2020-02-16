@@ -1,75 +1,65 @@
 {
-    "definitions": {},
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://example.com/root.json",
-    "type": "object",
-    "title": "The Root Schema",
-    "required": [
-      "user"
-    ],
-    "properties": {
-      "user": {
-        "$id": "#/properties/user",
-        "type": "object",
-        "title": "The User Schema",
-        "required": [
-          "username",
-          "password",
-          "account_type",
-          "email"
-        ],
-        "properties": {
-          "username": {
-            "$id": "#/properties/user/properties/username",
-            "type": "string",
-            "title": "The Username Schema",
-            "default": "",
-            "examples": [
-              "Alex"
-            ],
-            "pattern": "^(.*)$"
-          },
-          "password": {
-            "$id": "#/properties/user/properties/password",
-            "type": "string",
-            "title": "The Password Schema",
-            "default": "",
-            "examples": [
-              "dksaASD"
-            ],
-            "pattern": "^(.*)$"
-          },
-          "account_type": {
-            "$id": "#/properties/user/properties/account_type",
-            "type": "string",
-            "title": "The Account_type Schema",
-            "default": "",
-            "examples": [
-              "Individual"
-            ],
-            "pattern": "^(.*)$"
-          },
-          "email": {
-            "$id": "#/properties/user/properties/email",
-            "type": "string",
-            "title": "The Email Schema",
-            "default": "",
-            "examples": [
-              "bruh@suh.com"
-            ],
-            "pattern": "^(.*)$"
-          },
-          "photo_url": {
-            "$id": "#/properties/user/properties/photo_url",
-            "type": "string",
-            "title": "The Photo_url Schema",
-            "default": "",
-            "examples": [
-              "https://myphoto.com"
-            ],
-            "pattern": "^(.*)$"
-          }
-        }
-      }
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "username",
+    "password",
+    "account_type",
+    "email"
+  ],
+  "properties": {
+    "username": {
+      "$id": "#/properties/username",
+      "type": "string",
+      "title": "The Username Schema",
+      "default": "",
+      "examples": [
+        "Alex"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "password": {
+      "$id": "#/properties/password",
+      "type": "string",
+      "title": "The Password Schema",
+      "default": "",
+      "examples": [
+        "dksaASD"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "account_type": {
+      "$id": "#/properties/account_type",
+      "type": "string",
+      "title": "The Account_type Schema",
+      "default": "",
+      "examples": [
+        "Individual"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "email": {
+      "$id": "#/properties/email",
+      "type": "string",
+      "title": "The Email Schema",
+      "default": "",
+      "examples": [
+        "bruh@suh.com"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "photo_url": {
+      "$id": "#/properties/photo_url",
+      "type": "string",
+      "title": "The Photo_url Schema",
+      "default": "",
+      "examples": [
+        "https://myphoto.com"
+      ],
+      "pattern": "^(.*)$"
     }
   }
+}
