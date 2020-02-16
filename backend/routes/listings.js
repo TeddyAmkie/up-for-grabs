@@ -1,11 +1,13 @@
 const express = require('express');
 const router = new express.Router();
 const { ensureCorrectUser } = require('../middleware/auth');
+const Listing = require('../models/listing');
 
 // Get all food listings within range of pinpoint
 router.get('/', async function (req, res, next) {
   try {
-    return res.json({});
+    const listings = await Listing.findAll()
+    return res.json(listings);
   } catch (err) {
     return next(err);
   }
@@ -22,10 +24,10 @@ router.get('/:id', async function (req, res, next) {
 });
 
 // Create a new listing
-router.post('/:id', async function (req, res, next) {
+router.post('/', async function (req, res, next) {
   try {
-
-    return res.json({});
+    const listing = await Listing.create(req.body);
+    return res.json({ listing });
   } catch (err) {
     return next(err);
   }
@@ -34,7 +36,7 @@ router.post('/:id', async function (req, res, next) {
 // Update a food listing
 router.patch('/:id', ensureCorrectUser, async function (req, res, next) {
   try {
-    return res.json({  });
+    return res.json({});
   } catch (err) {
     return next(err);
   }
@@ -43,7 +45,7 @@ router.patch('/:id', ensureCorrectUser, async function (req, res, next) {
 // Delete a food listing
 router.delete('/', ensureCorrectUser, async function (req, res, next) {
   try {
-    return res.status(201).json({  });
+    return res.status(201).json({});
   } catch (err) {
     return next(err);
   }
