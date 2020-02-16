@@ -4,15 +4,15 @@ const cors = require("cors");
 const ExpressError = require("./helpers/expressError")
 app.use(cors());
 
-// const usersRoutes = require('./routes/users');
-const listingRoutes = require('./routes/listing');
+const usersRoutes = require('./routes/users');
+const listingRoutes = require('./routes/listings');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
 
-// app.use('/users', usersRoutes);
+app.use('/users', usersRoutes);
 app.use('/listing', listingRoutes);
 
 /** 404 handler */

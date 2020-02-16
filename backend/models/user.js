@@ -1,6 +1,6 @@
 const db = require('../db');
 const bcrypt = require('bcrypt');
-const ExpressError = require('../expressError');
+const ExpressError = require('../helpers/expressError');
 
 let BCRYPT_WORK_FACTOR = process.env.NODE_ENV === 'test' ? 1 : 12;
 
