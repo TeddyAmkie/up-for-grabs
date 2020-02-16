@@ -1,4 +1,4 @@
-import React, {useState, Dropdown} from 'react';
+import React, {useState} from 'react';
 import make_request from '../APIcall';
 
 function CreateUser() {
