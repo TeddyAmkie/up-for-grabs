@@ -80,6 +80,20 @@ class User {
     
     throw ExpressError("Invalid Password", 401);
   }
+
+  /** Get all users. */
+
+  static async getAll() {
+    const result = await db.query(
+      ` SELECT username,
+               account_type,
+               email
+          FROM users
+          ORDER BY username`
+    );
+
+    return result.rows;
+  }
 }
 
 module.exports = User;
