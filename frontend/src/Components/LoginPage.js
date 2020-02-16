@@ -6,8 +6,8 @@ function LoginPage() {
 
   return (
     <div>
-      {/* <CreateUser/> */}
-      <SignIn/>
+      <CreateUser/>
+      {/* <SignIn/> */}
     </div>
   );
  
