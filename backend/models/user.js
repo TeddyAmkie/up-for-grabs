@@ -58,14 +58,15 @@ class User {
   static async authenticate(data) {
     // try to find the user first.
     const result = await db.query(
-      ` SELECT username,
+      ` SELECT id,
+               username,
                password,
                account_type,
                email,
                photo_url
           FROM users
-          WHERE username = $1`,
-        [data.username]
+          WHERE email = $1`,
+        [data.email]
     );
 
     const user = result.rows[0];
