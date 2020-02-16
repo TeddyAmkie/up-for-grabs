@@ -13,6 +13,23 @@
   }
 }
 
+
+html {   
+	-webkit-box-sizing: border-box;
+  box-sizing: border-box;   
+ }
+ 
+ *: before, *: after {     
+ 	box-sizing: inherit;
+ }  
+
+ body { 	
+	color: #707070;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+ }
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,21 +41,12 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-#map {
-  width: 75vw;
-  height: 80vh;
-}
+.map { 
+	bottom: 0;
+	left: 25%;
+	position: absolute;
+	top: 0;
+	width: 75%;
+	z-index: -1;
+ }

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import FoodListing from './FoodListing';
 import '../App.css';
 
 class Map extends React.Component {
@@ -22,7 +22,8 @@ class Map extends React.Component {
 render (){
   return (
     <div>
-        <div id = 'map'></div>
+      <FoodListing/>
+        <div id = 'map' className='map'></div>
     </div>
   );
 }
