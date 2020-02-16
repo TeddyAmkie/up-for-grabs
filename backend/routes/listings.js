@@ -21,6 +21,16 @@ router.get('/:id', async function (req, res, next) {
   }
 });
 
+// Create a new listing
+router.post('/:id', async function (req, res, next) {
+  try {
+
+    return res.json({});
+  } catch (err) {
+    return next(err);
+  }
+});
+
 // Update a food listing
 router.patch('/:id', ensureCorrectUser, async function (req, res, next) {
   try {
