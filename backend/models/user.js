@@ -1,8 +1,29 @@
 const db = require('../db');
+const bcrypt = require('bcrypt');
 const ExpressError = require('../expressError');
 
+let BCRYPT_WORK_FACTOR = process.env.NODE_ENV === 'test' ? 1 : 12;
+
 class User {
-  static async create(data) {
+  static async register(data) {
+    // Check for duplicate email
+    const duplicateCheck = await db.query(
+      ` SELECT email
+        FROM users
+        WHERE email = $1`,
+      [data.email]
+    )
+
+    if (duplicateCheck.rows[0]) {
+      const err = new ExpressError(
+        `There already exists a user with e-mail ${data.email}`
+      );
+      err.status = 401;
+      throw err;
+    }
+
+    const hashedPassword = await bcrypt.hash(data.password, BCRYPT_WORK_FACTOR);
+
     const result = await db.query(
       ` INSERT INTO users (
           username,
@@ -18,7 +39,7 @@ class User {
           email,
           photo_url`,
       [data.username,
-       data.password,
+       hashedPassword,
        data.account_type,
        data.email,
        data.photo_url
