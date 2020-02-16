@@ -1,5 +1,5 @@
 const API_URL = 'http://localhost:3001';
-function make_request(route, success, error, data={}, method='GET') {
+function make_request(route, data={}, method='GET') {
 
   console.log(API_URL + route);
   console.log(method);
