@@ -3,18 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 import Map from './Components/Map';
 import LoginPage from './Components/LoginPage';
+import Routes from './Components/Routes';
+import Navigation from './Components/Navigation';
 
 function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <LoginPage/>
-        <Map/>
-      </header>
+      <Navigation/>
+      <Routes />
     </div>
   );
  
