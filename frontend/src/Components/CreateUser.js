@@ -24,7 +24,7 @@ function CreateUser() {
   };
 
   return (
-    <Fragment>
+    <form>
       <InputLabel htmlFor="username"></InputLabel>
       <Input
         id="input-with-icon-adornment"
@@ -83,7 +83,7 @@ function CreateUser() {
             }
           />
       <button onClick={e => handleSubmit(e)}>Submit</button>
-    </Fragment>
+      </form>
   );
 }
 

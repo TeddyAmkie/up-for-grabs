@@ -7,10 +7,8 @@ import Container from '@material-ui/core/Container'
 class LoginPage extends React.Component {
   render() {
     return (
-      <Container maxWidth="sm">
-        <Card>
-          <LoginUI></LoginUI>
-        </Card>
+      <Container >
+        <LoginUI></LoginUI>
       </Container>
     );
   }

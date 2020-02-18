@@ -36,14 +36,17 @@ TabPanels.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: '#88BDBC',
+    margin: "25px",
+    borderRadius: "10px",
+    "flex-direction": "column",
+    justifyContent: "center"
   }
 }));
 
@@ -57,7 +60,7 @@ export function LoginPage() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar style={{ "border-top-left-radius": "10px", "border-top-right-radius": "10px", "background": "#112D32" }}  position="static">
         <Tabs
           value={value}
           onChange={handleChange}
