@@ -1,16 +1,19 @@
-import React from 'react';
-import CreateUser from './CreateUser';
-import SignIn from './Login';
+import React from "react";
+import LoginUI from "./LoginUI";
+import Card from '@material-ui/core/Card'
+import Container from '@material-ui/core/Container'
 
-function LoginPage() {
 
-  return (
-    <div>
-      <CreateUser/>
-      {/* <SignIn/> */}
-    </div>
-  );
- 
+class LoginPage extends React.Component {
+  render() {
+    return (
+      <Container maxWidth="sm">
+        <Card>
+          <LoginUI></LoginUI>
+        </Card>
+      </Container>
+    );
+  }
 }
 
 export default LoginPage;
