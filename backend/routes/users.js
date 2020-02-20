@@ -5,7 +5,19 @@ const jsonschema = require("jsonschema");
 const usersSchema = require("../schemas/userSchema.json");
 const ExpressError = require("../helpers/expressError");
 
-// Create a user
+/** GET / => {users: [user, ...]}  */
+
+router.get('/', async function(req, res, next) {
+  try {
+    const users = await User.getAll();
+    return res.json({ users });
+  } catch (error) {
+    return next(error);
+  }
+});
+
+/** POST / {userdata}  => {token: token} */
+
 router.post('/', async function(req, res, next) {
   try {
     const result = jsonschema.validate(req.body, usersSchema);
