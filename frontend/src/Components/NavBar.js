@@ -14,6 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { NavLink } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -172,7 +173,7 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Up For Grabs
+            <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/">Up For Grabs</NavLink>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -186,7 +187,7 @@ export default function PrimarySearchAppBar() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            
+
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

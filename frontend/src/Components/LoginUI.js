@@ -43,10 +43,9 @@ function a11yProps(index) {
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: '#88BDBC',
-    margin: "25px",
     borderRadius: "10px",
-    "flex-direction": "column",
-    justifyContent: "center"
+    maxWidth: '600px',
+    margin:  '25px auto'
   }
 }));
 
@@ -60,7 +59,7 @@ export function LoginPage() {
 
   return (
     <div className={classes.root}>
-      <AppBar style={{ "border-top-left-radius": "10px", "border-top-right-radius": "10px", "background": "#112D32" }}  position="static">
+      <AppBar style={{ "border-top-left-radius": "10px", "border-top-right-radius": "10px", "background": "#112D32" }} position="static">
         <Tabs
           value={value}
           onChange={handleChange}
