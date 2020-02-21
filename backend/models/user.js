@@ -68,6 +68,8 @@ class User {
       ` SELECT id,
                username,
                password,
+               first_name,
+               last_name,
                account_type,
                email,
                photo_url
@@ -94,6 +96,8 @@ class User {
   static async getAll() {
     const result = await db.query(
       ` SELECT username,
+               first_name,
+               last_name,
                account_type,
                email
           FROM users
