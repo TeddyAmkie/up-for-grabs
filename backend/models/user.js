@@ -32,18 +32,24 @@ class User {
       ` INSERT INTO users (
           username,
           password,
+          first_name,
+          last_name,
           account_type,
           email,
           photo_url)
-        VALUES ($1, $2, $3, $4, $5)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING
           username,
           password,
+          first_name,
+          last_name,
           account_type,
           email,
           photo_url`,
       [data.username,
        hashedPassword,
+       data.first_name,
+       data.last_name,
        data.account_type,
        data.email,
        data.photo_url

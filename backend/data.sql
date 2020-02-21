@@ -6,6 +6,8 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username text NOT NULL UNIQUE,
     password text NOT NULL,
+    first_name text,
+    last_name text,
     account_type text NOT NULL,
     email text NOT NULL UNIQUE,
     photo_url TEXT
