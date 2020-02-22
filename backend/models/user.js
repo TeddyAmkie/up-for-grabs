@@ -106,6 +106,44 @@ class User {
 
     return result.rows;
   }
+
+  /** Given a username, return data about that user. */
+
+  static async getUser(username) {
+    const userRes = await db.query(
+      ` SELECT username,
+               first_name,
+               last_name
+               account_type,
+               email,
+               photo_url
+          FROM users
+          WHERE username = $1`,
+        [username]
+    );
+    
+    const user = userRes.rows[0];
+
+    if (!user) {
+      throw new ExpressError(`There exists no user with username '${username}'`, 404);
+    }
+
+    return user;
+  }
+
+  /** Delete given user from database. Returns undefined. */
+
+  static async deleteUser(username) {
+    let result = await db.query(
+      ` DELETE FROM users
+          WHERE username = $1`,
+        [username]
+    );
+
+    if (result.rows.length === 0) {
+      throw new ExpressError(`There exists no user with username '${username}'`, 404);
+    }
+  }
 }
 
 module.exports = User;
