@@ -16,6 +16,17 @@ router.get('/', async function(req, res, next) {
   }
 });
 
+/** GET /:username => {user: user} */
+
+router.get('/:username', async function(req, res, next) {
+  try {
+    const user = await User.getUser(req.params.username);
+    return res.json({ user });
+  } catch (error) {
+    return next(error);
+  }
+});
+
 /** POST / {userdata}  => {token: token} */
 
 router.post('/', async function(req, res, next) {
@@ -30,6 +41,17 @@ router.post('/', async function(req, res, next) {
 
     const user = await User.register(req.body);
     return res.json({ user }, 201);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+/** DELETE /:username => {message: "User deleted"} */
+
+router.delete('/:username', async function(req, res, next) {
+  try {
+    await User.deleteUser(req.params.username);
+    return res.json({ message: 'User deleted' });
   } catch (error) {
     return next(error);
   }
