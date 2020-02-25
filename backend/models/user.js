@@ -136,12 +136,13 @@ class User {
   static async deleteUser(username) {
     let result = await db.query(
       ` DELETE FROM users
-          WHERE username = $1`,
+          WHERE username = $1
+          RETURNING username`,
         [username]
     );
 
     if (result.rows.length === 0) {
-      throw new ExpressError(`There exists no user with username '${username}'`, 404);
+      throw new ExpressError(`There exists no user with username ${username}`, 404);
     }
   }
 }

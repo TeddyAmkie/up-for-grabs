@@ -50,7 +50,7 @@ router.post('/', async function(req, res, next) {
 
 router.delete('/:username', async function(req, res, next) {
   try {
-    await User.remove(req.params.username);
+    await User.deleteUser(req.params.username);
     return res.json({ message: 'User deleted' });
   } catch (error) {
     return next(error);
