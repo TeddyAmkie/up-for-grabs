@@ -4,10 +4,11 @@ const router = new express.Router();
 const jsonschema = require("jsonschema");
 const usersSchema = require("../schemas/userSchema.json");
 const ExpressError = require("../helpers/expressError");
+const createToken = require('../helpers/createToken');
 
 /** GET / => {users: [user, ...]}  */
 
-router.get('/', async function(req, res, next) {
+router.get('/', async function (req, res, next) {
   try {
     const users = await User.getAll();
     return res.json({ users });
@@ -18,7 +19,7 @@ router.get('/', async function(req, res, next) {
 
 /** GET /:username => {user: user} */
 
-router.get('/:username', async function(req, res, next) {
+router.get('/:username', async function (req, res, next) {
   try {
     const user = await User.getUser(req.params.username);
     return res.json({ user });
@@ -29,10 +30,10 @@ router.get('/:username', async function(req, res, next) {
 
 /** POST / {userdata}  => {token: token} */
 
-router.post('/', async function(req, res, next) {
+router.post('/', async function (req, res, next) {
   try {
     const result = jsonschema.validate(req.body, usersSchema);
-    
+
     if (!result.valid) {
       const listOfErrors = result.errors.map(err => err.stack);
       const error = new ExpressError(listOfErrors, 400);
@@ -40,7 +41,8 @@ router.post('/', async function(req, res, next) {
     }
 
     const user = await User.register(req.body);
-    return res.json({ user }, 201);
+    const token = createToken(user);
+    return res.json({ token }, 201);
   } catch (error) {
     return next(error);
   }
@@ -48,7 +50,7 @@ router.post('/', async function(req, res, next) {
 
 /** DELETE /:username => {message: "User deleted"} */
 
-router.delete('/:username', async function(req, res, next) {
+router.delete('/:username', async function (req, res, next) {
   try {
     await User.deleteUser(req.params.username);
     return res.json({ message: 'User deleted' });
