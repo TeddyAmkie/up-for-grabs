@@ -1,16 +1,25 @@
-DROP DATABASE IF EXISTS "up-for-grabs";
-CREATE DATABASE "up-for-grabs";
-\c "up-for-grabs"
-
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username text NOT NULL UNIQUE,
     password text NOT NULL,
     first_name text,
     last_name text,
-    account_type text NOT NULL,
     email text NOT NULL UNIQUE,
     photo_url TEXT
+);
+
+CREATE TABLE organization (
+    id SERIAL PRIMARY KEY,
+    dba text NOT NULL,
+    org_type text NOT NULL,
+    address text
+);
+
+CREATE TABLE roles (
+    id serial PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    entity_id INTEGER NOT NULL REFERENCES organization (id) ON DELETE CASCADE,
+    entity_type text NOT NULL
 );
 
 CREATE TABLE listings (
