@@ -7,7 +7,6 @@
   "required": [
     "username",
     "password",
-    "account_type",
     "email"
   ],
   "properties": {
@@ -28,16 +27,6 @@
       "default": "",
       "examples": [
         "dksaASD"
-      ],
-      "pattern": "^(.*)$"
-    },
-    "account_type": {
-      "$id": "#/properties/account_type",
-      "type": "string",
-      "title": "The Account_type Schema",
-      "default": "",
-      "examples": [
-        "Individual"
       ],
       "pattern": "^(.*)$"
     },
