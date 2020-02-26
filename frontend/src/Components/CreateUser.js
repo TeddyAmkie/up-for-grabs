@@ -1,22 +1,22 @@
-import React, { useState, Fragment } from "react";
-import make_request from "../APIcall";
-import { Input, NativeSelect, InputAdornment, IconButton, InputLabel } from "@material-ui/core/";
+import React, { useState } from "react";
+import UpForGrabsApi from "../APIcall";
+import { Input, InputAdornment, IconButton, InputLabel } from "@material-ui/core/";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import EmailIcon from "@material-ui/icons/Email";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 function CreateUser() {
-  const [accountType, setAccountType] = useState("Individual");
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    let data = { name, accountType, email, password };
-    make_request("/users/", data, "POST");
+    let data = { name, email, password };
+    let token = await UpForGrabsApi.signup(data);
+    console.log("result is", token);
   };
 
   const handleMouseDownPassword = event => {
@@ -51,21 +51,6 @@ function CreateUser() {
         placeholder="E-mail"
       ></Input>
 
-      <InputLabel htmlFor="account-type"></InputLabel>
-      <NativeSelect
-        fullWidth
-        value={accountType}
-        onChange={e => setAccountType(e.target.value)}
-        inputProps={{
-          name: 'age',
-          id: 'age-native-label-placeholder',
-        }}
-      >
-        <option value="Indvidual">Indvidual</option>
-        <option value="Charity">Charity</option>
-        <option value="Business">Buisness</option>
-      </NativeSelect>
-      <br></br>
       <Input
         fullWidth
         id="standard-adornment-password"

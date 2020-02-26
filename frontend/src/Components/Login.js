@@ -10,7 +10,8 @@ function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = {email, password}
-    make_request('/users/auth', data, 'POST');
+    let result = make_request('/users/', data, 'POST');
+    console.log(result);
   }
 
     return (
