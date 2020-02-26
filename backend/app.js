@@ -6,6 +6,7 @@ app.use(cors());
 
 const usersRoutes = require('./routes/users');
 const listingRoutes = require('./routes/listings');
+const authRoutes = require('./routes/auth');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/users', usersRoutes);
 app.use('/listing', listingRoutes);
+app.use('/', authRoutes);
 
 /** 404 handler */
 
