@@ -55,7 +55,7 @@ class User {
     return result.rows[0];
   }
 
-  /** Authenticate user with username, password. Returns user or throws error. */
+  /** Authenticate user with email, password. Returns user or throws error. */
 
   static async authenticate(data) {
     // try to find the user first.
@@ -81,9 +81,9 @@ class User {
       if (isValid) {
         return user;
       }
+      throw new ExpressError("Invalid Password", 401);
     }
-    
-    throw ExpressError("Invalid Password", 401);
+    throw new ExpressError("User not found", 401);
   }
 
   /** Get all users. */
