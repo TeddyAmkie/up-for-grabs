@@ -42,8 +42,8 @@ class UpForGrabsApi {
   
   static async signup(data) {
     let res = await this.request(`users`, data, "post");
-
-    return res.token;
+// Should return the token
+    return res;
   }
 }
 

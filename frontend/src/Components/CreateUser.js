@@ -7,14 +7,14 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 function CreateUser() {
-  const [name, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    let data = { name, email, password };
+    let data = { username, email, password };
     let token = await UpForGrabsApi.signup(data);
     console.log("result is", token);
   };
