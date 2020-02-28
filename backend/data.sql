@@ -37,6 +37,7 @@ CREATE TABLE listings (
 CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    organziation_id INTEGER NOT NULL REFERENCES organization ON DELETE CASCADE,
     listing_id INTEGER NOT NULL REFERENCES listings (id) ON DELETE CASCADE,
     status TEXT NOT NULL
 );
