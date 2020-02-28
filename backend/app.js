@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/users', usersRoutes);
 app.use('/listing', listingRoutes);
-app.use('/', authRoutes);
+app.use('/auth', authRoutes);
 
 /** 404 handler */
 
