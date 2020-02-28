@@ -5,6 +5,7 @@ const jsonschema = require("jsonschema");
 const usersSchema = require("../schemas/userSchema.json");
 const ExpressError = require("../helpers/expressError");
 const createToken = require('../helpers/createToken');
+const { ensureCorrectUser } = require('../middleware/auth');
 
 /** GET / => {users: [user, ...]}  */
 
@@ -19,9 +20,9 @@ router.get('/', async function (req, res, next) {
 
 /** GET /:username => {user: user} */
 
-router.get('/:username', async function (req, res, next) {
+router.get('/:id', ensureCorrectUser, async function (req, res, next) {
   try {
-    const user = await User.getUser(req.params.username);
+    const user = await User.getUser(req.params.id);
     return res.json({ user });
   } catch (error) {
     return next(error);

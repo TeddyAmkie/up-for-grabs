@@ -1,11 +1,11 @@
 /** Middleware to handle routes authentication */
 
 const jwt = require("jsonwebtoken");
-const { SECRET } = require("../config");
+const { SECRET_KEY } = require("../config");
 
 
 /** Middleware to authenticate a valid token
- * req.body ---- { _token }
+ * req.body ---- { token }
  * 
  *  Add id onto req for view functions. 
  * 
@@ -14,8 +14,8 @@ const { SECRET } = require("../config");
 
 function authRequired(req, res, next) {
   try {
-    const reqToken = req.body._token || req.query._token;
-    let token = jwt.verify(reqToken, SECRET);
+    const reqToken = req.body.token || req.query.token;
+    let token = jwt.verify(reqToken, SECRET_KEY);
     req.user_id = token.user_id;
     return next();
   }
@@ -28,7 +28,7 @@ function authRequired(req, res, next) {
 }
 
 /** Middleware to authenticate admin token
-* req.body ---- { _token }
+* req.body ---- { token }
 * 
 *  Add id onto req for view functions. 
 * 
@@ -37,8 +37,8 @@ function authRequired(req, res, next) {
 
 function adminRequired(req, res, next) {
   try {
-    const reqToken = req.body._token || req.query._token;
-    let token = jwt.verify(reqToken, SECRET);
+    const reqToken = req.body.token || req.query.token;
+    let token = jwt.verify(reqToken, SECRET_KEY);
     req.user_id = token.user_id;
 
     if (token.is_admin) {
@@ -57,7 +57,7 @@ function adminRequired(req, res, next) {
 
 /** Middleware to use when they must provide a valid token & be user matching
 *  id provided as route params.
-* req.body ---- { _token }
+* req.body ---- { token }
 *
 * Add id onto req as a convenience for view functions.
 *
@@ -69,10 +69,9 @@ function adminRequired(req, res, next) {
 function ensureCorrectUser(req, res, next) {
   
   try {
-    const tokenStr = req.body._token || req.query._token;
-    let token = jwt.verify(tokenStr, SECRET);
+    const tokenStr = req.body.token || req.query.token;
+    let token = jwt.verify(tokenStr, SECRET_KEY);
     req.user_id = token.user_id;
-
     // changing params.id to integer to make correct comparison
     // checks if user is admin to allow admins to get individual user data
     if (token.user_id === Number(req.params.id) || token.is_admin === true) {
