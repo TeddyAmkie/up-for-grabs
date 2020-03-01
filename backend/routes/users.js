@@ -43,6 +43,7 @@ router.post('/', async function (req, res, next) {
 
     const user = await User.register(req.body);
     const token = createToken(user);
+    res.cookie("token", token, { httpOnly: true });
     return res.json({ token }, 201);
   } catch (error) {
     return next(error);
